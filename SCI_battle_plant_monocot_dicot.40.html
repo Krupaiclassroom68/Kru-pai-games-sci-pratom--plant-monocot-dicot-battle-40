@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Battle! พืชใบเลี้ยงเดี่ยว vs ใบเลี้ยงคู่ — Kru Pai Classroom (40 ข้อ + หน้าทบทวน)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6fff6; --fg:#1e2b1e; --brand:#2ecc71; --accent:#ff4d4f; --card:#ffffff; --muted:#8aa38a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#eaffea 0%, var(--bg) 50%, #ffffff 100%);font-family:'Noto Sans Thai',system-ui,sans-serif;color:var(--fg);display:flex;min-height:100vh;align-items:center;justify-content:center}
+  .container{width:min(980px,96vw);padding:20px}
+  .card{background:var(--card);border-radius:22px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+  .center{text-align:center}
+  .grid{display:grid;gap:16px}
+  .hidden{display:none !important}
+
+  /* แถบแบรนด์บนสุดทุกหน้า */
+  .miniBrand{display:flex;align-items:center;gap:10px;justify-content:center;font-weight:800;color:#2b4a2b;margin:-6px 0 10px}
+  .miniBrand .dot{width:10px;height:10px;background:linear-gradient(135deg,#ffd86b,#ff9a3c);border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+
+  /* ปุ่ม */
+  .btn{border:0;cursor:pointer;padding:14px 18px;border-radius:999px;font-weight:800;font-size:18px;letter-spacing:.3px;transition:.2s transform,.2s box-shadow,.2s filter}
+  .btn:active{transform:translateY(1px)}
+  .btn-lg{padding:18px 28px;font-size:22px}
+  .btn-primary{background:linear-gradient(135deg,#ff5a66,var(--accent));color:#fff;box-shadow:0 8px 18px rgba(255,77,79,.35)}
+  .btn-outline{background:transparent;color:var(--fg);border:2px dashed var(--muted)}
+
+  /* หน้าเกม */
+  .question{font-size:clamp(28px,6vw,52px);font-weight:800;color:var(--brand);margin:12px 0 8px}
+  .timer{display:flex;align-items:center;gap:10px;justify-content:center;font-weight:800}
+  .bar{width:100%;height:12px;background:#ffecec;border-radius:999px;overflow:hidden}
+  .bar>div{height:100%;width:100%;background:linear-gradient(90deg,#ffd6d6,#ffb0b0);transition:width .2s linear}
+  .choices{display:grid;grid-template-columns:1fr;gap:14px;margin-top:10px}
+  @media(min-width:520px){.choices{grid-template-columns:1fr 1fr}}
+  .choice{background:linear-gradient(135deg,#ff6a6d,var(--accent));color:#fff;border:none;border-radius:18px;padding:16px;font-size:20px;font-weight:800;cursor:pointer;box-shadow:0 10px 20px rgba(255,77,79,.25);transition:.15s transform,.15s filter}
+  .choice:hover{filter:brightness(1.06)}
+  .choice:active{transform:translateY(1px)}
+  .status{min-height:56px;font-weight:800;text-align:center;margin-top:10px;font-size:clamp(22px,5vw,32px)}
+  .status.good{color:#0b9a32;text-shadow:0 2px 0 rgba(255,255,255,.6)}
+  .status.bad{color:#c70000;text-shadow:0 2px 0 rgba(255,255,255,.6)}
+  .status-bubble{display:inline-block;padding:10px 16px;border-radius:999px;background:#fff;border:3px solid #ffe1e1;box-shadow:0 8px 16px rgba(0,0,0,.08)}
+
+  /* หน้าทบทวนตัวอย่าง */
+  .two-col{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:720px){.two-col{grid-template-columns:1fr 1fr}}
+  .list-card{background:#fff;border:2px solid #e6f7ef;border-radius:18px;padding:14px 16px}
+  .list-card h3{margin:6px 0 8px;font-weight:800}
+  .plant-list{display:flex;flex-wrap:wrap;gap:10px}
+  .plant{background:#f4fff6;border:1px solid #cff1d5;padding:8px 12px;border-radius:16px;font-weight:700}
+
+  /* หน้าสรุปคะแนน */
+  .score-big{font-size:clamp(36px,8vw,72px);font-weight:800;margin:6px 0 12px}
+</style>
+</head>
+<body>
+  <div class="container grid">
+
+    <!-- หน้า 1: หน้าปก + วิธีเล่น + ปุ่มดูตัวอย่าง -->
+    <section id="screen-home" class="card">
+      <div class="miniBrand"><span class="dot"></span> Kru Pai Classroom</div>
+      <h1 class="center">Battle! พืชใบเลี้ยงเดี่ยว vs ใบเลี้ยงคู่</h1>
+      <div class="center" style="margin:8px 0 14px;">
+        <span style="display:inline-block;background:#ffef9e;padding:6px 14px;border-radius:999px;font-weight:800">โหมด 40 ข้อ · จับเวลา 7 วินาที/ข้อ</span>
+      </div>
+      <div class="grid">
+        <div class="card" style="background:#fbfff5">
+          <h2>วิธีเล่น (อ่านก่อนเริ่ม)</h2>
+          <p style="font-size:18px;line-height:1.7"><strong>จงบอกประเภทของพืชต่อไปนี้</strong> ว่าเป็น <strong>ใบเลี้ยงเดี่ยว</strong> หรือ <strong>ใบเลี้ยงคู่</strong> — 
+            <mark style="background:#fff2a8;padding:0 6px;border-radius:6px;">จับเวลา 7 วินาทีต่อข้อ</mark> 
+            หากพร้อมแล้ว <strong>กดปุ่ม Start</strong> เพื่อเริ่มเล่นได้เลย!
+          </p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center" aria-hidden="true">
+            <span class="plant">ชื่อพืช = สีเขียว</span>
+            <span class="plant">ตัวเลือก = สีแดง</span>
+          </div>
+        </div>
+        <div class="grid" style="grid-template-columns:1fr;gap:12px">
+          <input id="playerName" class="card" placeholder="พิมพ์ชื่อเล่นของหนู…" style="padding:14px 16px;border:2px dashed #cde8d1;border-radius:16px;font-size:18px" />
+          <div class="center" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+            <button id="btnStart" class="btn btn-lg btn-primary" style="font-size:24px;padding:18px 34px;box-shadow:0 12px 26px rgba(255,77,79,.35)">🚀 START เริ่ม Battle 40 ข้อ!</button>
+            <button id="btnExamples" class="btn btn-lg btn-outline">📚 ดูตัวอย่างพืช (20+20)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- หน้า 2: ตัวอย่างพืช 20+20 -->
+    <section id="screen-examples" class="card hidden">
+      <div class="miniBrand"><span class="dot"></span> Kru Pai Classroom</div>
+      <h2 class="center">ตัวอย่างพืชที่ควรรู้ (20 + 20)</h2>
+      <div class="two-col">
+        <div class="list-card">
+          <h3>🌱 ใบเลี้ยงเดี่ยว</h3>
+          <div id="monoList" class="plant-list"></div>
+        </div>
+        <div class="list-card">
+          <h3>🌼 ใบเลี้ยงคู่</h3>
+          <div id="diList" class="plant-list"></div>
+        </div>
+      </div>
+      <div class="center" style="margin-top:14px">
+        <button id="backFromExamples" class="btn">⬅ กลับหน้าแรก</button>
+        <button id="startFromExamples" class="btn btn-primary">🚀 เริ่ม Battle 40 ข้อ</button>
+      </div>
+    </section>
+
+    <!-- หน้า 3: เกม 40 ข้อ -->
+    <section id="screen-game" class="card hidden">
+      <div class="miniBrand"><span class="dot"></span> Kru Pai Classroom</div>
+      <div class="grid">
+        <div class="timer">
+          <div class="bar" aria-label="ตัวจับเวลา"><div id="barFill"></div></div>
+          <div><strong id="timeText">7</strong>s</div>
+        </div>
+        <div class="center">
+          <div id="qCount" style="font-weight:800;color:#6b8f6b">ข้อ 1/40</div>
+          <div id="question" class="question">—</div>
+        </div>
+        <div class="choices">
+          <button class="choice" data-pick="mono">🌱 ใบเลี้ยงเดี่ยว</button>
+          <button class="choice" data-pick="di">🌼 ใบเลี้ยงคู่</button>
+        </div>
+        <div id="status" class="status status-bubble"></div>
+      </div>
+    </section>
+
+    <!-- หน้า 4: สรุปคะแนน -->
+    <section id="screen-result" class="card hidden center">
+      <div class="miniBrand"><span class="dot"></span> Kru Pai Classroom</div>
+      <h2>สรุปคะแนนของ <span id="playerLabel">นักเรียน</span></h2>
+      <div id="finalScore" class="score-big">0 / 40</div>
+      <p id="finalMsg" style="font-size:18px;margin-top:10px">—</p>
+      <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button id="btnPlayAgain" class="btn btn-primary">🔁 เล่นอีกครั้ง</button>
+        <button id="btnHome" class="btn">🏠 กลับหน้าแรก (ลงชื่อเล่น)</button>
+      </div>
+    </section>
+
+  </div>
+
+<script>
+// ======================= ข้อมูลพืช =======================
+const MONO = [
+  "กล้วย","หญ้า","ข้าว","ปาล์ม","มะพร้าว","บัว","ว่านหางจระเข้",
+  "ขิง","กระเทียม","หอม","ไผ่","ข้าวโพด","สับปะรด","ขมิ้น",
+  "กก","ปอ","ผักบุ้งทะเล","หญ้าแฝก","กระเจียว","อ้อย"
+];
+const DI = [
+  "มะม่วง","กุหลาบ","ถั่ว","ทานตะวัน","พริก","มะเขือ","ผักบุ้ง",
+  "บัวบก","กระเจี๊ยบ","มะลิ","แตงกวา","มะนาว","ขนุน","ฝ้าย",
+  "เงาะ","ทุเรียน","มะเขือเทศ","ฟักทอง","ลำไย","มะกรูด"
+];
+const ALL_ITEMS = [
+  ...MONO.map(n=>({name:n,ans:'mono'})),
+  ...DI.map(n=>({name:n,ans:'di'}))
+];
+
+// สุ่ม 40 ข้อ (ต้องการกระจายดี จึงทำให้สำเนาชุดรวม 2 ครั้งแล้วสับ)
+function pick40(){
+  const pool = [...ALL_ITEMS, ...ALL_ITEMS];
+  for(let i=pool.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [pool[i],pool[j]] = [pool[j],pool[i]];
+  }
+  return pool.slice(0,40);
+}
+
+// DOM
+const screens={
+  home:document.getElementById('screen-home'),
+  examples:document.getElementById('screen-examples'),
+  game:document.getElementById('screen-game'),
+  result:document.getElementById('screen-result')
+};
+const monoList=document.getElementById('monoList');
+const diList=document.getElementById('diList');
+const btnExamples=document.getElementById('btnExamples');
+const backFromExamples=document.getElementById('backFromExamples');
+const startFromExamples=document.getElementById('startFromExamples');
+const btnStart=document.getElementById('btnStart');
+const playerNameInput=document.getElementById('playerName');
+
+const qCount=document.getElementById('qCount');
+const question=document.getElementById('question');
+const statusBox=document.getElementById('status');
+const timeText=document.getElementById('timeText');
+const barFill=document.getElementById('barFill');
+const choiceButtons=[...document.querySelectorAll('.choice')];
+
+const playerLabel=document.getElementById('playerLabel');
+const finalScore=document.getElementById('finalScore');
+const finalMsg=document.getElementById('finalMsg');
+const btnPlayAgain=document.getElementById('btnPlayAgain');
+const btnHome=document.getElementById('btnHome');
+
+// แสดงรายการตัวอย่าง
+function renderExamples(){
+  if(monoList) monoList.innerHTML = MONO.map(p=>`<span class="plant">${p}</span>`).join('');
+  if(diList) diList.innerHTML = DI.map(p=>`<span class="plant">${p}</span>`).join('');
+}
+renderExamples();
+
+// สลับหน้าจอ
+function show(id){ Object.values(screens).forEach(sec=>sec.classList.add('hidden')); screens[id].classList.remove('hidden'); }
+btnExamples?.addEventListener('click',()=>show('examples'));
+backFromExamples?.addEventListener('click',()=>show('home'));
+startFromExamples?.addEventListener('click',()=>startGame());
+btnStart?.addEventListener('click',()=>startGame());
+
+// เกมหลัก
+let deck=[], index=0, score=0, timer=null; const LIMIT=7; // วินาที/ข้อ
+function startGame(){ deck=pick40(); index=0; score=0; statusBox.textContent=''; show('game'); nextQuestion(); }
+
+function nextQuestion(){
+  if(index>=deck.length) return endGame();
+  const item=deck[index];
+  qCount.textContent = `ข้อ ${index+1}/40`;
+  question.textContent = item.name; // ชื่อพืช (สีเขียวจาก CSS)
+  statusBox.textContent=''; statusBox.className='status status-bubble';
+  choiceButtons.forEach(b=>{ b.disabled=false; b.style.opacity=1; });
+  startTimer(LIMIT, ()=>{ // หมดเวลา = ผิด
+    flash(false);
+    setTimeout(()=>{ index++; nextQuestion(); }, 500);
+  });
+}
+
+function startTimer(seconds,onTimeout){
+  clearInterval(timer);
+  let remain=seconds; const total=seconds;
+  timeText.textContent=remain; barFill.style.width='100%';
+  timer=setInterval(()=>{
+    remain -= 0.1;
+    if(remain<=0){ clearInterval(timer); timeText.textContent=0; barFill.style.width='0%'; onTimeout && onTimeout(); }
+    else { timeText.textContent=Math.ceil(remain); barFill.style.width = `${(remain/total)*100}%`; }
+  },100);
+}
+
+choiceButtons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    if(index>=deck.length) return;
+    const pick=btn.getAttribute('data-pick');
+    choiceButtons.forEach(b=>{ b.disabled=true; b.style.opacity=.7; });
+    clearInterval(timer);
+    const ok = (pick===deck[index].ans); if(ok) score++;
+    flash(ok);
+    setTimeout(()=>{ index++; nextQuestion(); }, 500);
+  })
+});
+
+function flash(ok){
+  statusBox.textContent = ok ? 'ถูกต้องจ้า! เยี่ยมมาก 🌟' : 'โอ๊ะ พลาดนิดนึง ลองใหม่ในข้อถัดไปนะ 🌱';
+  statusBox.className = 'status status-bubble ' + (ok ? 'good' : 'bad');
+}
+
+function endGame(){
+  show('result');
+  const name=(playerNameInput.value||'นักเรียน').trim();
+  playerLabel.textContent=name;
+  finalScore.textContent=`${score} / 40`;
+  finalMsg.textContent = score>=30 ? 'สุดยอด! ได้ 30 ข้อขึ้นไป ถือว่าผ่านแล้ว 🎉' : 'สู้ๆ นะ ลองใหม่อีกครั้งให้ได้ 30 ข้อขึ้นไป ✨';
+}
+
+btnPlayAgain?.addEventListener('click',()=>startGame());
+btnHome?.addEventListener('click',()=>show('home'));
+</script>
+</body>
+</html>
